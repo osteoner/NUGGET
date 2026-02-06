@@ -1,16 +1,11 @@
 # RogueChainDB & Nugget Architecture
 
-**RogueChainDB** is a structured dataset of cryptocurrency transactions designed for the study of illicit activity detection on blockchain networks. **Nugget** is the accompanying modular learning architecture for continuous-time dynamic graphs.
-
+**RogueChainDB** is a labeled dataset of Bitcoin designed for the study of illicit activity detection on blockchain networks. **NUGGET** is a self-supervised framework that uses continuous-time dynamic graphs to model transaction graphs and detect illicit cryptocurrency addresses.
 ---
 
 ## 📚 1. Dataset: RogueChainDB
-
-RogueChainDB is organized into **four main components**, enabling the reconstruction of transaction histories and address-level activity patterns.
-
-### 📥 Data Availability (Anonymous)
-To maintain the integrity of the **double-blind review process**, the  dataset has been hosted on an anonymous Google Drive account created specifically for this submission.
-**🔗 Download Link:** [https://drive.google.com/file/d/1y8WpHS0OYujg3y2nCKwBf1Nr_mV7nf_D/view?usp=sharing]
+RogueChainDB comprises **1,085,800 labeled Bitcoin addresses**, constructed by harmonizing data from the underground forum *HackForums* and public academic repositories.
+This dataset is organized into **four main components**:
 
 ### Part 1: Address Features
 *   **File:** `bitcoin_address_features.npy`
@@ -34,21 +29,27 @@ To maintain the integrity of the **double-blind review process**, the  dataset h
     
 > **Note on Block Height:** Block height is the sequential index of a block, starting from zero at the Genesis Block. It provides an immutable temporal reference for the network’s evolution and consensus history.
 
+### 📥 Data Availability (Anonymous)
+To maintain the integrity of the **double-blind review process**, the  dataset has been hosted on an anonymous Google Drive account created specifically for this submission.
+**🔗 Download Link:** [https://drive.google.com/file/d/1a9Ek0IvbxnS-RHvUo_2wtIqg5ExS0Om6/view?usp=sharing]
+
+
 ---
 
 ## 🧠 2. Learning Architecture: Nugget
 
-**Nugget** is a modular framework that combines a self-supervised learning model and supervised nodes classification to detect illicit addresses in a large transaction graph.
-
 ### Architecture Overview
-The learning pipeline consists of two main stages:
-1.  **Embedding Learning:** Utilizing temporal graph models to capture evolving structural patterns.
-2.  **Node Classification:** Detecting illicit addresses based on the learned representations.
+1.  **Self-Supervised Embedding Learning:** 
+    *   Uses a **Temporal Graph Neural Network (TGNN)** to learn dynamic node embeddings via a link-prediction objective.
+    *   Captures structural and temporal patterns without using any ground-truth labels.
+2.  **Supervised Node Classification:** 
+    *   Uses the frozen embeddings from Phase 1 to train a lightweight **Multi-Layer Perceptron (MLP)**.
+    *   Detects illicit addresses even in highly imbalanced settings.
 
-The architecture supports three state-of-the-art backbones:
+### Supported Backbones
+The framework implements and compares two state-of-the-art continuous-time models:
+*   **TGN** (Temporal Graph Networks) 
 *   **DyRep**
-*   **TGN** (Temporal Graph Networks)
-*   **JODIE**
 
 ---
 
@@ -67,15 +68,16 @@ pip install -r requirements.txt
 ```
 
 ### ⚠️ Artifact Evaluation
-To facilitate the review process and artifact evaluation, we have included the **processed feature matrices, transaction graphs, and label sets** directly in the processed directory.
+Due to the large size of the **processed features**, we host them on an anonymous drive. You need to download the processed dataset from the provided link and place it in the processed/ directory. The dataset includes the **processed address feature matrices, edge feature matrices, and transaction graphs**.
+
 processed/
 ├── bitcoin_address_features.npy
 ├── bitcoin_transaction_features.npy
 └── bitcoin_transactions.csv
-**🔗 Download Link:** [https://drive.google.com/file/d/1y8WpHS0OYujg3y2nCKwBf1Nr_mV7nf_D/view?usp=sharing]
+**🔗 Download Link:** [https://drive.google.com/file/d/15eFKi4vbmhCZDViX3fZRaDvZ-TK73PPL/view?usp=sharing]
 ## 🚀 4. Usage
 
-The pipeline allows you to train embeddings using different backbones and then perform classification.
+The pipeline allows you to pretrain the models using different backbones and then perform classification.
 
 ### Step 1: Embedding Learning
 Run one of the following scripts to learn temporal node embeddings from the transaction graph.
