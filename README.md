@@ -69,11 +69,13 @@ pip install -r requirements.txt
 
 ### ⚠️ Artifact Evaluation
 Due to the large size of the **processed features**, we host them on an anonymous drive. You need to download the processed dataset from the provided link and place it in the processed/ directory. The dataset includes the **processed address feature matrices, edge feature matrices, and transaction graphs**.
-
+```bash
 processed/
 ├── bitcoin_address_features.npy
 ├── bitcoin_transaction_features.npy
 └── bitcoin_transactions.csv
+```
+
 **🔗 Download Link:** [https://drive.google.com/file/d/15eFKi4vbmhCZDViX3fZRaDvZ-TK73PPL/view?usp=sharing]
 ## 🚀 4. Usage
 
