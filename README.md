@@ -85,7 +85,7 @@ python tgn_learn_embedding.py --data processed/bitcoin_transactions.csv
 python jodie_learn_embedding.py --data processed/bitcoin_transactions.csv
 ```
 ### Step 2: Node Classification
-Pass the learned embeddings (frozen or fine-tuned) to the classifier to predict Licit vs Illicit labels.
+Pass the learned embeddings to the classifier to predict Licit vs Illicit labels.
 
 
 ```bash
