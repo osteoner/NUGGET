@@ -1,3 +1,8 @@
+# Copyright (c) 2026, The RogueChainDB Authors
+# All rights reserved.
+#
+# This source code is licensed under the BSD-style license.
+
 import math
 import timeit
 import os
