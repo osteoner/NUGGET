@@ -90,9 +90,6 @@ python dyrep_learn_embedding.py --data processed/bitcoin_transactions.csv
 
 # Option B: Temporal Graph Networks (TGN)
 python tgn_learn_embedding.py --data processed/bitcoin_transactions.csv
-
-# Option C: JODIE
-python jodie_learn_embedding.py --data processed/bitcoin_transactions.csv
 ```
 ### Step 2: Node Classification
 Pass the learned embeddings to the classifier to predict Licit vs Illicit labels.
@@ -103,7 +100,4 @@ python dyrep_node_classification.py
 
 # Classify using TGN embeddings
 python tgn_node_classification.py
-
-# Classify using JODIE embeddings
-python jodie_node_classification.py
 ```
