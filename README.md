@@ -9,9 +9,9 @@
 RogueChainDB is organized into **four main components**, enabling the reconstruction of transaction histories and address-level activity patterns.
 
 ### 📥 Data Availability (Anonymous)
-To maintain the integrity of the **double-blind review process**, the full dataset has been hosted on an anonymous Google Drive account created specifically for this submission.
-
-**🔗 Download Link:** [INSERT_YOUR_GOOGLE_DRIVE_LINK_HERE]
+To maintain the integrity of the **double-blind review process**, the  dataset has been hosted on an anonymous Google Drive account created specifically for this submission.
+We provide a sample of RoguechainDB, but we will provide 
+**🔗 Download Link:** [https://drive.google.com/file/d/1y8WpHS0OYujg3y2nCKwBf1Nr_mV7nf_D/view?usp=sharing]
 
 ### Part 1: Address Features
 *   **File:** `processed/bitcoin_address_features.npy`
@@ -66,12 +66,14 @@ source venv/bin/activate
 # Install dependencies
 pip install -r requirements.txt
 ```
-## Ensure the preprocessed data is placed in the processed/ directory:
+
+### ⚠️ Artifact Evaluation
+To facilitate the review process and artifact evaluation, we have included the **processed feature matrices, transaction graphs, and label sets** directly in the processed directory.
 processed/
 ├── bitcoin_address_features.npy
 ├── bitcoin_transaction_features.npy
 └── bitcoin_transactions.csv
-
+**🔗 Download Link:** [https://drive.google.com/file/d/1y8WpHS0OYujg3y2nCKwBf1Nr_mV7nf_D/view?usp=sharing]
 ## 🚀 4. Usage
 
 The pipeline allows you to train embeddings using different backbones and then perform classification.
@@ -91,7 +93,6 @@ python jodie_learn_embedding.py --data processed/bitcoin_transactions.csv
 ```
 ### Step 2: Node Classification
 Pass the learned embeddings to the classifier to predict Licit vs Illicit labels.
-
 
 ```bash
 # Classify using DyRep embeddings
