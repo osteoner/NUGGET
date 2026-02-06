@@ -47,4 +47,4 @@ RogueChainDB is suitable for:
 ---
 
 ## License and Usage
-This dataset is intended for **research purposes only**. Please cite the associated paper if you use RogueChainDB in your work.
+This dataset is intended for **research purposes**. Please cite the associated paper if you use RogueChainDB in your work.
