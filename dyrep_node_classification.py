@@ -1,4 +1,4 @@
-# Copyright (c) 2026, The RogueChainDB Authors
+# Copyright (c) 2026, The NUGGET Authors
 # All rights reserved.
 #
 # This source code is licensed under the BSD-style license.
