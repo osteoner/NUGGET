@@ -101,3 +101,5 @@ python dyrep_node_classification.py
 # Classify using TGN embeddings
 python tgn_node_classification.py
 ```
+## 📄 License
+This project (RogueChainDB & NUGGET) is licensed under the **BSD 3-Clause License**. 
