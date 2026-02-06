@@ -9,7 +9,7 @@ This dataset is organized into **four main components**:
 
 ### Part 1: Address Features
 *   **File:** `bitcoin_address_features.npy`
-*   **Description:** Contains **eight transaction and temporal features** for each cryptocurrency address. These characterize address behavior over time and serve as static node attributes for graph-based models.
+*   **Description:** Contains **eleven transaction and temporal features** for each cryptocurrency address. These characterize address behavior over time and serve as static node attributes for graph-based models.
 
 ### Part 2: Address–Transaction Mapping
 *   **File:** `bitcoin_transactions.csv`
