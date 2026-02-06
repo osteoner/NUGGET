@@ -8,6 +8,11 @@
 
 RogueChainDB is organized into **four main components**, enabling the reconstruction of transaction histories and address-level activity patterns.
 
+### 📥 Data Availability (Anonymous)
+To maintain the integrity of the **double-blind review process**, the full dataset has been hosted on an anonymous Google Drive account created specifically for this submission.
+
+**🔗 Download Link:** [INSERT_YOUR_GOOGLE_DRIVE_LINK_HERE]
+
 ### Part 1: Address Features
 *   **File:** `processed/bitcoin_address_features.npy`
 *   **Description:** Contains **eight transaction and temporal features** for each cryptocurrency address. These characterize address behavior over time and serve as static node attributes for graph-based models.
