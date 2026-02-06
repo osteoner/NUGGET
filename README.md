@@ -1,50 +1,100 @@
-# RogueChainDB
+# RogueChainDB & Nugget Architecture
 
-**RogueChainDB** is a structured cryptocurrency transaction dataset designed for the study of illicit activity detection on blockchain networks. It provides address-level features, transaction mappings, behavioral labels, and interaction graphs to support graph-based and temporal learning tasks.
+**RogueChainDB** is a structured cryptocurrency transaction dataset designed for the study of illicit activity detection on blockchain networks. **Nugget** is the accompanying modular learning architecture for continuous-time dynamic graphs.
 
 ---
 
-## Dataset Structure
+## 📚 1. Dataset: RogueChainDB
 
-RogueChainDB is organized into **four main components**, summarized below:
+RogueChainDB is organized into **four main components**, enabling the reconstruction of transaction histories and address-level activity patterns.
 
 ### Part 1: Address Features
-This component contains **eight transaction and temporal features** for each cryptocurrency address. These features characterize address behavior over time and are intended to serve as node attributes in graph-based models.
-
----
+*   **File:** `processed/bitcoin_address_features.npy`
+*   **Description:** Contains **eight transaction and temporal features** for each cryptocurrency address. These characterize address behavior over time and serve as static node attributes for graph-based models.
 
 ### Part 2: Address–Transaction Mapping
-This component maps each address to its corresponding **transaction identifiers**, enabling the reconstruction of transaction histories and address-level activity patterns.
-
----
+*   **File:** `processed/bitcoin_transactions.csv`
+*   **Description:** Maps each address to its corresponding **transaction identifiers**.
 
 ### Part 3: Address Labels
-Each address is associated with:
-- A **binary class label**: *Licit* or *Illicit*
-- A **fine-grained illicit category**, when applicable (e.g., Ransomware, Scamming, Black Market, Ponzi, Laundering)
+*   **Description:** Ground-truth data where each address is associated with:
+    1.  A **binary class label**: *Licit* or *Illicit*.
+    2.  A **fine-grained illicit category** (e.g., Ransomware, Scamming, Black Market, Ponzi, Laundering).
+*   *Note: Labels are curated from public sources and expert validation.*
 
-These labels are curated from public sources and expert validation.
-
----
-
-### Part 4: Address Interactions
-This component captures **pairwise interactions** between input and output addresses. Each interaction includes:
-- **Block height**, serving as a timestamp and enabling chronological ordering
-- **Transfer volume**, measured in satoshis
-
-Block height is the sequential index of a block in the blockchain, starting from zero at the Genesis Block. It provides an immutable temporal reference for the network’s evolution and consensus history.
+### Part 4: Address Interactions (The Graph)
+*   **Description:** Captures **pairwise interactions** between input and output addresses.
+*   **Attributes:**
+    *   **Transfer Volume:** Measured in satoshis.
+    *   **Timestamp:** Represented by **Block Height**.
+    
+> **Note on Block Height:** Block height is the sequential index of a block, starting from zero at the Genesis Block. It provides an immutable temporal reference for the network’s evolution and consensus history.
 
 ---
 
-## Use Cases
-RogueChainDB is suitable for:
-- Illicit address detection
-- Transaction graph analysis
-- Temporal and continuous-time graph learning
-- Self-supervised and semi-supervised node classification
-- Blockchain forensics and security research
+## 🧠 2. Learning Architecture: Nugget
+
+**Nugget** is a modular framework for learning address embeddings and performing node-level classification on continuous-time dynamic graphs.
+
+### Architecture Overview
+The learning pipeline consists of two main stages:
+1.  **Embedding Learning:** Utilizing temporal graph models to capture evolving structural patterns.
+2.  **Node Classification:** Detecting illicit addresses based on the learned representations.
+
+The architecture supports three state-of-the-art backbones:
+*   **DyRep**
+*   **TGN** (Temporal Graph Networks)
+*   **JODIE**
 
 ---
 
-## License and Usage
-This dataset is intended for **research purposes**. Please cite the associated paper if you use RogueChainDB in your work.
+## 🛠️ 3. Setup and Dependencies
+
+### Prerequisites
+All dependencies required to run the Nugget architecture are listed in `requirements.txt`.
+
+```bash
+# Create a virtual environment (recommended)
+python -m venv venv
+source venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+```
+## Ensure the preprocessed data is placed in the processed/ directory:
+processed/
+├── bitcoin_address_features.npy
+├── bitcoin_transaction_features.npy
+└── bitcoin_transactions.csv
+
+## 🚀 4. Usage
+
+The pipeline allows you to train embeddings using different backbones and then perform classification.
+
+### Step 1: Embedding Learning
+Run one of the following scripts to learn temporal node embeddings from the transaction graph.
+
+```bash
+# Option A: DyRep
+python dyrep_learn_embedding.py --data processed/bitcoin_transactions.csv
+
+# Option B: Temporal Graph Networks (TGN)
+python tgn_learn_embedding.py --data processed/bitcoin_transactions.csv
+
+# Option C: JODIE
+python jodie_learn_embedding.py --data processed/bitcoin_transactions.csv
+```
+### Step 2: Node Classification
+Pass the learned embeddings (frozen or fine-tuned) to the classifier to predict Licit vs Illicit labels.
+
+
+```bash
+# Classify using DyRep embeddings
+python dyrep_node_classification.py
+
+# Classify using TGN embeddings
+python tgn_node_classification.py
+
+# Classify using JODIE embeddings
+python jodie_node_classification.py
+```
