@@ -1,4 +1,4 @@
-# RogueChainDB & Nugget Architecture
+## RogueChainDB & Nugget Architecture
 
 **RogueChainDB** is a labeled dataset of Bitcoin designed for the study of illicit activity detection on blockchain networks. **NUGGET** is a self-supervised framework that uses continuous-time dynamic graphs to model transaction graphs and detect illicit cryptocurrency addresses.
 ---
