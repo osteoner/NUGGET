@@ -1,6 +1,6 @@
 # RogueChainDB & Nugget Architecture
 
-**RogueChainDB** is a structured cryptocurrency transaction dataset designed for the study of illicit activity detection on blockchain networks. **Nugget** is the accompanying modular learning architecture for continuous-time dynamic graphs.
+**RogueChainDB** is a structured dataset of cryptocurrency transactions designed for the study of illicit activity detection on blockchain networks. **Nugget** is the accompanying modular learning architecture for continuous-time dynamic graphs.
 
 ---
 
@@ -10,7 +10,6 @@ RogueChainDB is organized into **four main components**, enabling the reconstruc
 
 ### 📥 Data Availability (Anonymous)
 To maintain the integrity of the **double-blind review process**, the  dataset has been hosted on an anonymous Google Drive account created specifically for this submission.
-We provide a sample of RoguechainDB, but we will provide 
 **🔗 Download Link:** [https://drive.google.com/file/d/1y8WpHS0OYujg3y2nCKwBf1Nr_mV7nf_D/view?usp=sharing]
 
 ### Part 1: Address Features
