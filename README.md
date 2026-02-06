@@ -13,18 +13,18 @@ To maintain the integrity of the **double-blind review process**, the  dataset h
 **🔗 Download Link:** [https://drive.google.com/file/d/1y8WpHS0OYujg3y2nCKwBf1Nr_mV7nf_D/view?usp=sharing]
 
 ### Part 1: Address Features
-*   **File:** `processed/bitcoin_address_features.npy`
+*   **File:** `bitcoin_address_features.npy`
 *   **Description:** Contains **eight transaction and temporal features** for each cryptocurrency address. These characterize address behavior over time and serve as static node attributes for graph-based models.
 
 ### Part 2: Address–Transaction Mapping
-*   **File:** `processed/bitcoin_transactions.csv`
+*   **File:** `bitcoin_transactions.csv`
 *   **Description:** Maps each address to its corresponding **transaction identifiers**.
 
 ### Part 3: Address Labels
 *   **Description:** Ground-truth data where each address is associated with:
     1.  A **binary class label**: *Licit* or *Illicit*.
     2.  A **fine-grained illicit category** (e.g., Ransomware, Scamming, Black Market, Ponzi, Laundering).
-*   *Note: Labels are curated from public sources and expert validation.*
+*   *Note: Labels are curated from Hackforums and public sources.*
 
 ### Part 4: Address Interactions (The Graph)
 *   **Description:** Captures **pairwise interactions** between input and output addresses.
@@ -38,7 +38,7 @@ To maintain the integrity of the **double-blind review process**, the  dataset h
 
 ## 🧠 2. Learning Architecture: Nugget
 
-**Nugget** is a modular framework for learning address embeddings and performing node-level classification on continuous-time dynamic graphs.
+**Nugget** is a modular framework that combines a self-supervised learning model and supervised nodes classification to detect illicit addresses in a large transaction graph.
 
 ### Architecture Overview
 The learning pipeline consists of two main stages:
