@@ -156,8 +156,8 @@ python preprocess.py \
 # Stage 2: Learn embeddings
 python learn_embeddings.py \
     --cache-dir ./cache/elliptic_refined \
-    --pretrain-epochs 20 \
-    --mem-dim 172 --time-dim 172 --emb-dim 172 \
+    --pretrain-epochs 5 \
+    --mem-dim 128 --time-dim 128 --emb-dim 128 \
     --seed 42
 
 # Stage 3: RANC classification 
@@ -193,7 +193,7 @@ Metrics are printed to stdout and also written to `saved_results/{dataset_tag}/R
 ### `preprocess.py`
 
 **Data & I/O**
-- `--dataset`: `elliptic` or `roguechaindb.`
+- `--dataset`: `elliptic` or `roguechaindb`
 - `--data-root`: Path to raw Elliptic++ files (containing `Actors Dataset/`)
 - `--cache-dir`: Output directory for preprocessed `.npy` files
 - `--force-preprocess`: Rebuild cache even if it exists
@@ -217,19 +217,20 @@ Metrics are printed to stdout and also written to `saved_results/{dataset_tag}/R
 
 **Training**
 - `--seed`: Random seed 
-- `--pretrain-epochs`: Number of pretraining epochs 
+- `--pretrain-epochs`: Number of pretraining epochs (default 20)
 - `--bs`: Batch size 
-- `--lr`: Learning rate 
+- `--lr`: Learning rate
 
 **TGN Architecture**
-- `--mem-dim`: Memory dimension
+- `--mem-dim`: Memory dimension 
 - `--time-dim`: Time encoding dimension 
 - `--emb-dim`: GNN embedding dimension 
 - `--num-neighbors`: K-hop neighborhood size 
 
 **I/O**
 - `--dataset-tag`: Tag for saved models dir
-- `--num-run`: Number of runs
+- `--num-run`: Number of runs 
+
 ### `classify_ranc.py`
 
 **Data**
@@ -239,29 +240,29 @@ Metrics are printed to stdout and also written to `saved_results/{dataset_tag}/R
 **Training**
 - `--seed`: Random seed 
 - `--num-epoch`: RANC training epochs 
-- `--bs`: Batch size
+- `--bs`: Batch size 
 - `--lr`: Classifier learning rate 
 - `--fine-tune-tgn`: Unfreeze TGN during RANC training at LR/10 (flag)
 
 **Splits**
-- `--split-type`: `stratified`, `temporal`, `random`, or `paper_temporal.` 
+- `--split-type`: `stratified`, `temporal`, `random`, or `paper_temporal` 
 - `--train-ratio`: Fraction for train 
 - `--val-ratio`: Fraction for validation 
 - `--paper-cut-ts`: Cutoff for `paper_temporal` mode (default 33, matching Elliptic++ paper)
 - `--bank-licit-max`: Cap licit prototype bank size 
 
 **RANC Hyperparameters**
-- `--ranc-top-m`: Number of neighbors to retrieve 
+- `--ranc-top-m`: Number of neighbors to retrieve
 - `--ranc-num-scales`: Number of retrieval scales 
 - `--ranc-similarity`: Similarity metric: `cosine`, `pearson`, or `l2` (default `cosine`)
-- `--ranc-temperature`: Softmax temperature for attention
+- `--ranc-temperature`: Softmax temperature for attention 
 - `--ranc-hidden`: Hidden dimension of MLP head 
-- `--ranc-dropout`: Dropout in classifier 
-- `--dual-bank`: Build both licit AND illicit prototype banks (flag)
+- `--ranc-dropout`: Dropout in classifier
+- `--dual-bank`: Build both licit AND illicit prototype banks
 
 **Loss & Optimization**
 - `--focal-gamma`: Focal loss γ 
-- `--focal-alpha`: Focal loss α 
+- `--focal-alpha`: Focal loss α
 - `--no-balanced-sampler`: Use standard random sampling instead of class-balanced (flag)
 
 **Early Stopping**
