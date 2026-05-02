@@ -705,7 +705,7 @@ def parse_args():
         description="Stage 1: preprocess Elliptic++ or RogueChainDB.")
     # Data
     p.add_argument("--dataset", choices=["elliptic", "roguechaindb"],
-                   default="elliptic",
+                   default="roguechaindb",
                    help="elliptic = raw Elliptic++ CSVs (default); "
                         "roguechaindb = bitcoin_transactions.csv + two .npy files")
     p.add_argument("--data-root", type=str,
