@@ -11,7 +11,7 @@ from sklearn.preprocessing import RobustScaler
 
 
 # ══════════════════════════════════════════════════════════════════════
-# "The Shape of Money Laundering", KDD '23 — arXiv:2306.06108v1).
+# "Demystifying Fraudulent Transactions and Illicit Nodes in the Bitcoin Network for Financial Forensics", KDD '23 — arXiv:2306.06108v1).
 #
 #   Figure 11b  — RF permutation importance on the Actors dataset:
 #                 Top-10 most informative features are {Addr_interactions_total,
