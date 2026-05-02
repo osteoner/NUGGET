@@ -193,7 +193,7 @@ Metrics are printed to stdout and also written to `saved_results/{dataset_tag}/R
 ### `preprocess.py`
 
 **Data & I/O**
-- `--dataset`: `elliptic` or `roguechaindb`
+- `--dataset`: `elliptic` or `roguechaindb.`
 - `--data-root`: Path to raw Elliptic++ files (containing `Actors Dataset/`)
 - `--cache-dir`: Output directory for preprocessed `.npy` files
 - `--force-preprocess`: Rebuild cache even if it exists
@@ -216,21 +216,20 @@ Metrics are printed to stdout and also written to `saved_results/{dataset_tag}/R
 - `--cache-dir`: Path to preprocessed files (required)
 
 **Training**
-- `--seed`: Random seed (default 42)
-- `--pretrain-epochs`: Number of pretraining epochs (default 20)
-- `--bs`: Batch size (default 512)
-- `--lr`: Learning rate (default 1e-3)
+- `--seed`: Random seed 
+- `--pretrain-epochs`: Number of pretraining epochs 
+- `--bs`: Batch size 
+- `--lr`: Learning rate 
 
 **TGN Architecture**
-- `--mem-dim`: Memory dimension (default 172)
-- `--time-dim`: Time encoding dimension (default 172)
-- `--emb-dim`: GNN embedding dimension (default 172)
-- `--num-neighbors`: K-hop neighborhood size (default 20)
+- `--mem-dim`: Memory dimension
+- `--time-dim`: Time encoding dimension 
+- `--emb-dim`: GNN embedding dimension 
+- `--num-neighbors`: K-hop neighborhood size 
 
 **I/O**
-- `--dataset-tag`: Tag for saved models dir (default `elliptic_full`)
-- `--num-run`: Number of runs (default 1)
-
+- `--dataset-tag`: Tag for saved models dir
+- `--num-run`: Number of runs
 ### `classify_ranc.py`
 
 **Data**
@@ -238,39 +237,39 @@ Metrics are printed to stdout and also written to `saved_results/{dataset_tag}/R
 - `--pretrained-model`: Path to TGN checkpoint from Stage 2 (required)
 
 **Training**
-- `--seed`: Random seed (default 42)
-- `--num-epoch`: RANC training epochs (default 40)
-- `--bs`: Batch size (default 512)
-- `--lr`: Classifier learning rate (default 1e-3)
+- `--seed`: Random seed 
+- `--num-epoch`: RANC training epochs 
+- `--bs`: Batch size
+- `--lr`: Classifier learning rate 
 - `--fine-tune-tgn`: Unfreeze TGN during RANC training at LR/10 (flag)
 
 **Splits**
-- `--split-type`: `stratified`, `temporal`, `random`, or `paper_temporal` (default `temporal`)
-- `--train-ratio`: Fraction for train (default 0.7)
-- `--val-ratio`: Fraction for validation (default 0.10)
+- `--split-type`: `stratified`, `temporal`, `random`, or `paper_temporal.` 
+- `--train-ratio`: Fraction for train 
+- `--val-ratio`: Fraction for validation 
 - `--paper-cut-ts`: Cutoff for `paper_temporal` mode (default 33, matching Elliptic++ paper)
 - `--bank-licit-max`: Cap licit prototype bank size 
 
 **RANC Hyperparameters**
-- `--ranc-top-m`: Number of neighbors to retrieve (default 10)
-- `--ranc-num-scales`: Number of retrieval scales (default 2)
+- `--ranc-top-m`: Number of neighbors to retrieve 
+- `--ranc-num-scales`: Number of retrieval scales 
 - `--ranc-similarity`: Similarity metric: `cosine`, `pearson`, or `l2` (default `cosine`)
-- `--ranc-temperature`: Softmax temperature for attention (default 0.07)
-- `--ranc-hidden`: Hidden dimension of MLP head (default 256)
-- `--ranc-dropout`: Dropout in classifier (default 0.3)
+- `--ranc-temperature`: Softmax temperature for attention
+- `--ranc-hidden`: Hidden dimension of MLP head 
+- `--ranc-dropout`: Dropout in classifier 
 - `--dual-bank`: Build both licit AND illicit prototype banks (flag)
 
 **Loss & Optimization**
-- `--focal-gamma`: Focal loss γ (default 2.0)
-- `--focal-alpha`: Focal loss α (default 0.75)
+- `--focal-gamma`: Focal loss γ 
+- `--focal-alpha`: Focal loss α 
 - `--no-balanced-sampler`: Use standard random sampling instead of class-balanced (flag)
 
 **Early Stopping**
-- `--tolerance`: Tolerance for improvement (default 1e-4)
-- `--patience`: Patience for early stopping (default 5 epochs)
-
+- `--tolerance`: Tolerance for improvement 
+- `--patience`: Patience for early stopping
+  
 **I/O**
-- `--dataset-tag`: Tag for saved results (default `elliptic_full`)
+- `--dataset-tag`: Tag for saved results 
 - `--log-test-per-epoch`: Also evaluate test set every epoch (flag, diagnostic only)
 
 ---
