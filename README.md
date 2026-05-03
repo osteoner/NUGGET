@@ -155,7 +155,21 @@ python preprocess.py \
     --rdb-ts-mode calendar2w \
     --cache-dir ./cache/rdb_calendar2w
 
-# Stage 2 & 3: same as Elliptic++ but with --cache-dir ./cache/rdb_calendar2w
+# Stage 2: Learn embeddings
+python learn_embeddings.py \
+    --cache-dir  ./cache/rdb_calendar2w \
+    --pretrain-epochs 5 \
+    --mem-dim 128 --time-dim 128 --emb-dim 128 \
+    --seed 42
+
+# Stage 3: RANC classification 
+python classify_ranc.py \
+    --cache-dir  ./cache/rdb_calendar2w \
+    --pretrained-model saved_models/roguechaindb/TGN_PRETRAIN_42_0.pth \
+    --ranc-top-m 10 --ranc-num-scales 2 \
+    --num-epoch 40 \
+    --seed 42
+
 ```
 
 ### Elliptic++
@@ -168,20 +182,7 @@ python preprocess.py \
     --cache-dir ./cache/elliptic_refined \
     --feature-mode refined
 
-# Stage 2: Learn embeddings
-python learn_embeddings.py \
-    --cache-dir ./cache/elliptic_refined \
-    --pretrain-epochs 5 \
-    --mem-dim 128 --time-dim 128 --emb-dim 128 \
-    --seed 42
-
-# Stage 3: RANC classification 
-python classify_ranc.py \
-    --cache-dir ./cache/elliptic_refined \
-    --pretrained-model saved_models/elliptic_full/TGN_PRETRAIN_42_0.pth \
-    --ranc-top-m 10 --ranc-num-scales 2 \
-    --num-epoch 40 --dual-bank \
-    --seed 42
+# Stage 2 & 3: same as Roguechaindb but with --cache-dir ./cache/elliptic_refined
 ```
 
 
