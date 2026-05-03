@@ -66,7 +66,7 @@ EllipticPlusPlus/
     *   Captures structural and temporal patterns without using any ground-truth labels.
 2.  **Retrieval-Augmented Node Classification (RANC):**
     *   Uses the frozen embeddings from Phase 1 to train a retrieval-augmented classifier with licit banks.
-    *   Detects illicit addresses even in highly imbalanced settings (Elliptic++ ≈ 5% illicit).
+    *   Detects illicit addresses even in highly imbalanced settings.
 
 The pipeline is split into **three independent scripts** so that any stage can be re-run without redoing the previous ones.
 
@@ -135,7 +135,7 @@ Builds class-specific prototype banks and trains a retrieval-augmented classifie
   - `saved_results/{dataset_tag}/RANC_full_run{run}.json` — metrics (P/R/F1/AUC/AP)
 - **Key features**:
   - Multi-scale retrieval with learnable projections
-  - Binary focal loss + balanced batch sampling
+  - Binary focal loss 
   - Optional TGN fine-tuning at LR/10
   - Threshold tuning on validation set
 
@@ -263,7 +263,6 @@ Metrics are printed to stdout and also written to `saved_results/{dataset_tag}/R
 **Loss & Optimization**
 - `--focal-gamma`: Focal loss γ 
 - `--focal-alpha`: Focal loss α
-- `--no-balanced-sampler`: Use standard random sampling instead of class-balanced (flag)
 
 **Early Stopping**
 - `--tolerance`: Tolerance for improvement 
