@@ -143,6 +143,21 @@ Builds class-specific prototype banks and trains a retrieval-augmented classifie
 
 ## 5. Quick Start
 
+### RogueChainDB
+
+```bash
+# Stage 1: Preprocess (11 static features)
+python preprocess.py \
+    --dataset roguechaindb \
+    --rdb-transactions ./processed/bitcoin_transactions.csv \
+    --rdb-node-features ./processed/bitcoin_address_features.npy \
+    --rdb-edge-features ./processed/bitcoin_transaction_features.npy \
+    --rdb-ts-mode calendar2w \
+    --cache-dir ./cache/rdb_calendar2w
+
+# Stage 2 & 3: same as Elliptic++ but with --cache-dir ./cache/rdb_calendar2w
+```
+
 ### Elliptic++
 
 ```bash
@@ -169,20 +184,6 @@ python classify_ranc.py \
     --seed 42
 ```
 
-### RogueChainDB
-
-```bash
-# Stage 1: Preprocess (11 static features)
-python preprocess.py \
-    --dataset roguechaindb \
-    --rdb-transactions ./processed/bitcoin_transactions.csv \
-    --rdb-node-features ./processed/bitcoin_address_features.npy \
-    --rdb-edge-features ./processed/bitcoin_transaction_features.npy \
-    --rdb-ts-mode calendar2w \
-    --cache-dir ./cache/rdb_calendar2w
-
-# Stage 2 & 3: same as Elliptic++ but with --cache-dir ./cache/rdb_calendar2w
-```
 
 Metrics are printed to stdout and also written to `saved_results/{dataset_tag}/RANC_full_run{run}.json`.
 
